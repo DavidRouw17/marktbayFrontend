@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'marktbay';
-  activeUser = false;
+  activeUser = true;
 }

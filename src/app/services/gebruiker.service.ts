@@ -3,6 +3,9 @@ import {Observable, Subject, throwError} from 'rxjs';
 import {Gebruiker} from '../models/gebruikers';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {catchError} from 'rxjs/operators';
+import {Inlogpoging} from '../models/inlogpoging';
+import {Advertentie} from '../models/advertentie';
+import {GebruikerDto} from '../models/gebruikerDto';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +14,10 @@ export class GebruikerService {
   private url = 'http://localhost:9080/mb/app/gebruikers';
 
   gebruikersUpdated$ = new Subject<Gebruiker[]>();
+
+  actieveGebruiker$ = new Subject<GebruikerDto>();
+
+  actieveGebruiker: GebruikerDto;
 
   constructor(private http: HttpClient) {
   }
@@ -46,6 +53,20 @@ export class GebruikerService {
 
   updateGebruiker(c: Gebruiker): void {
     this.http.put<Gebruiker>(`${this.url}/${c.id}`, c)
+      .subscribe();
+  }
+
+  logIn(i: Inlogpoging): Observable<GebruikerDto> {
+    this.http.post<GebruikerDto>(this.url.toString() + '/login', i)
+      .pipe(catchError(this.handleError))
+      .subscribe(
+        gebruiker => this.actieveGebruiker = gebruiker
+      );
+    return this.actieveGebruiker$;
+  }
+
+  addAdvertentie(a: Advertentie): void {
+    this.http.post<Gebruiker>(this.url.toString() + '/' + this.actieveGebruiker.id + '/advertenties', a)
       .subscribe();
   }
 
