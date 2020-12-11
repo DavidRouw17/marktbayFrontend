@@ -1,0 +1,33 @@
+form div {
+  display: flex;
+  margin: 5px;
+}
+
+form div div{
+  color:red;
+
+}
+form label {
+  min-width: 120px;
+  padding: 7px 0;
+  color:black;
+}
+input {
+  padding:9px 9px;
+}
+
+
+input {
+  border: 1px solid gray;
+  border-radius: 5px;
+  transition: 0.2s ease all;
+  outline: none;
+}
+
+
+input.ng-touched.ng-invalid{
+  border-width: 1px;
+  border-color: red;
+  box-shadow: red;
+}
+

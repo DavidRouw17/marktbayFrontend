@@ -1,0 +1,15 @@
+<div class="zoekinput">
+  <input type="text" placeholder="Waar bent u naar op zoek?" [(ngModel)]="searchword" (keyup)="find()">
+</div>
+
+<ul>
+  <li *ngFor="let advertentie of advertentieLijst$ | async">
+    <div class="titel">{{advertentie.titel}}</div>
+    <div class="prijs">{{advertentie.prijs}}</div>
+    <div class="omschrijving">{{advertentie.omschrijving}}</div>
+    <div class="eigenaaradvertentie">{{advertentie.gebruikerVoornaam}} {{advertentie.gebruikerAchternaam}}</div>
+  </li>
+</ul>
+
+
+

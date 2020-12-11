@@ -1,0 +1,33 @@
+
+<form [formGroup]="adresRegistreerForm" (change)="deelAdresInfo()">
+  <div>
+    <label for="inputStraat">Straat: </label>
+    <input type="text" id="inputStraat" class="form-control" formControlName="straat" placeholder="Straat">
+    <div *ngIf="adresRegistreerForm.get('straat').invalid &&
+        adresRegistreerForm.get('straat').touched">*
+    </div>
+    <div *ngIf="adresRegistreerForm.get('straat').invalid &&
+        adresRegistreerForm.get('straat').dirty">Dit is een verplicht veld!
+    </div>
+  </div>
+  <div>
+    <label for="inputWoonplaats">Woonplaats: </label>
+    <input type="text" id="inputWoonplaats" class="form-control" formControlName="woonplaats" placeholder="Woonplaats">
+    <div *ngIf="adresRegistreerForm.get('woonplaats').invalid &&
+        adresRegistreerForm.get('woonplaats').touched">*
+    </div>
+    <div *ngIf="adresRegistreerForm.get('woonplaats').invalid &&
+        adresRegistreerForm.get('woonplaats').dirty">Dit is een verplicht veld!
+    </div>
+  </div><div>
+  <label for="inputPostcode">Postcode: </label>
+  <input type="text" id="inputPostcode" class="form-control" formControlName="postcode" placeholder="Postcode">
+  <div *ngIf="adresRegistreerForm.get('postcode').invalid &&
+        adresRegistreerForm.get('postcode').touched">*
+  </div>
+  <div *ngIf="adresRegistreerForm.get('postcode').invalid &&
+       adresRegistreerForm.get('postcode').errors?.pattern &&
+        adresRegistreerForm.get('postcode').touched">Vul een valide postcode in!
+  </div>
+</div>
+</form>

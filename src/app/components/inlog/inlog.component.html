@@ -1,0 +1,30 @@
+<h1>Welkom bij Marktbay!</h1>
+<h2>Hier kunt u inloggen</h2>
+
+<form [formGroup]="inlogFormulier" (ngSubmit)="logIn()">
+  <div>
+  <label for="inputEmail">Email:</label>
+  <input type="text" id="inputEmail" class="form-control" formControlName="email" placeholder="Email">
+  <div *ngIf="inlogFormulier.get('email').invalid &&
+        inlogFormulier.get('email').touched">*
+  </div>
+  <div *ngIf="inlogFormulier.get('email').invalid &&
+        inlogFormulier.get('email').dirty">Dit is een verplicht veld!
+  </div>
+  </div>
+  <div>
+    <label for="inputWachtwoord">Wachtwoord:</label>
+    <input type="password" id="inputWachtwoord" class="form-control" formControlName="wachtwoord" placeholder="Wachtwoord">
+    <div *ngIf="inlogFormulier.get('wachtwoord').invalid &&
+        inlogFormulier.get('wachtwoord').touched">*
+    </div>
+    <div *ngIf="inlogFormulier.get('wachtwoord').invalid &&
+        inlogFormulier.get('wachtwoord').dirty">Dit is een verplicht veld!
+    </div>
+    <br>
+  </div>
+  <button [disabled]="inlogFormulier.invalid" class="btn btn-primary">Log in!</button>
+</form>
+
+<br><br>
+<div><a routerLink="/registreren"> Nog geen account?</a></div>
