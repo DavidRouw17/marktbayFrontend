@@ -1,41 +1,46 @@
 <div id="container">
-<h2>Registreer nieuwe gebruiker</h2>
-<form [formGroup]="gebruikerRegistreerForm" (ngSubmit)="addGebruiker()" (click)="checkInschrijvingCompleet()" (keydown)="checkInschrijvingCompleet()">
+<form [formGroup]="gebruikerRegistreerForm" (ngSubmit)="addGebruiker()" (mousemove)="checkInschrijvingCompleet()" (click)="checkInschrijvingCompleet()" (keydown)="checkInschrijvingCompleet()" id="signup">
+  <div class="header">
+    <h3>Registreer nieuwe gebruiker</h3>
+    <p>Welkom bij de club!</p>
+  </div>
+
+  <div class="lijn"></div>
+  <div class="input">
   <div>
-    <label for="inputVoornaam">Voornaam:</label>
     <input type="text" id="inputVoornaam" class="form-control" formControlName="voornaam" placeholder="Voornaam">
     <div *ngIf="gebruikerRegistreerForm.get('voornaam').invalid &&
-        gebruikerRegistreerForm.get('voornaam').touched">*
+        gebruikerRegistreerForm.get('voornaam').touched" class="star">*
     </div>
     <div *ngIf="gebruikerRegistreerForm.get('voornaam').invalid &&
         gebruikerRegistreerForm.get('voornaam').dirty">Dit is een verplicht veld!
     </div>
   </div>
 
-  <div><label for="inputAchternaam">Achternaam:</label>
+  <div>
     <input type="text" id="inputAchternaam" class="form-control" formControlName="achternaam" placeholder="Achternaam">
     <div *ngIf="gebruikerRegistreerForm.get('achternaam').invalid &&
-        gebruikerRegistreerForm.get('achternaam').touched">*
+        gebruikerRegistreerForm.get('achternaam').touched" class="star">*
     </div>
     <div *ngIf="gebruikerRegistreerForm.get('achternaam').invalid &&
         gebruikerRegistreerForm.get('achternaam').dirty">Dit is een verplicht veld!
     </div>
   </div>
-  <div><label for="inputEmail">E-mailadres:</label>
+  <div>
     <input type="text" id="inputEmail" class="form-control" formControlName="email" placeholder="Emailadres">
     <div *ngIf="gebruikerRegistreerForm.get('email').invalid &&
-        gebruikerRegistreerForm.get('email').touched">*
+        gebruikerRegistreerForm.get('email').touched" class="star">*
     </div>
     <div *ngIf="gebruikerRegistreerForm.get('email').invalid &&
        gebruikerRegistreerForm.get('email').errors?.pattern &&
         gebruikerRegistreerForm.get('email').touched">Vul een valide emailadres in!
     </div>
   </div>
-  <div><label for="inputWachtwoord">Wachtwoord:</label>
+  <div>
     <input type="password" id="inputWachtwoord" class="form-control" formControlName="wachtwoord"
            placeholder="Wachtwoord (minimaal 6 tekens)">
     <div *ngIf="gebruikerRegistreerForm.get('wachtwoord').invalid &&
-        gebruikerRegistreerForm.get('wachtwoord').touched">*
+        gebruikerRegistreerForm.get('wachtwoord').touched" class="star">*
     </div>
     <div *ngIf="gebruikerRegistreerForm.get('wachtwoord').invalid &&
        gebruikerRegistreerForm.get('wachtwoord').errors?.minlength&&
@@ -43,12 +48,14 @@
     </div>
   </div>
   <div id="bezorgwijzes"  (click)="checkVoorAfhalen()" >
-    <label for="bezorgwijzes">Bezorgwijze(n):</label>
-   <select multiple formControlName="bezorgwijzen">
-     <option *ngFor="let bezorg of bezorgwijzenLijst" [ngValue]="bezorg">{{bezorg}}</option>
-   </select>
+    <label for="bezorgwijzes">Ondersteunde bezorgwijze(n):</label>
+    <label>
+      <select multiple formControlName="bezorgwijzen">
+        <option *ngFor="let bezorg of bezorgwijzenLijst" [ngValue]="bezorg">{{bezorg}}</option>
+      </select>
+    </label>
     <div *ngIf="gebruikerRegistreerForm.get('bezorgwijzen').invalid &&
-        gebruikerRegistreerForm.get('bezorgwijzen').touched">*
+        gebruikerRegistreerForm.get('bezorgwijzen').touched" class="star">*
     </div>
   </div>
 
@@ -56,40 +63,43 @@
   <ng-container *ngIf="afhalenGekozen">
     <form [formGroup]="adresRegistreerForm">
       <div>
-        <label for="inputStraat">Straat: </label>
+
         <input type="text" id="inputStraat" class="form-control" formControlName="straat" placeholder="Straat">
         <div *ngIf="adresRegistreerForm.get('straat').invalid &&
-        adresRegistreerForm.get('straat').touched">*
+        adresRegistreerForm.get('straat').touched" class="star">*
         </div>
         <div *ngIf="adresRegistreerForm.get('straat').invalid &&
         adresRegistreerForm.get('straat').dirty">Dit is een verplicht veld!
         </div>
       </div>
       <div>
-        <label for="inputWoonplaats">Woonplaats: </label>
+
         <input type="text" id="inputWoonplaats" class="form-control" formControlName="woonplaats" placeholder="Woonplaats">
         <div *ngIf="adresRegistreerForm.get('woonplaats').invalid &&
-        adresRegistreerForm.get('woonplaats').touched">*
+        adresRegistreerForm.get('woonplaats').touched" class="star">*
         </div>
         <div *ngIf="adresRegistreerForm.get('woonplaats').invalid &&
         adresRegistreerForm.get('woonplaats').dirty">Dit is een verplicht veld!
         </div>
       </div><div>
-      <label for="inputPostcode">Postcode: </label>
+
       <input type="text" id="inputPostcode" class="form-control" formControlName="postcode" placeholder="Postcode">
       <div *ngIf="adresRegistreerForm.get('postcode').invalid &&
-        adresRegistreerForm.get('postcode').touched">*
+        adresRegistreerForm.get('postcode').touched" class="star">*
       </div>
       <div *ngIf="adresRegistreerForm.get('postcode').invalid &&
        adresRegistreerForm.get('postcode').errors?.pattern &&
-        adresRegistreerForm.get('postcode').touched">Vul een valide postcode in!
+        adresRegistreerForm.get('postcode').touched" >Vul een valide postcode in!
       </div>
     </div>
     </form>
   </ng-container>
 
-
-  <button [disabled]="inschrijvingIncompleet" class="btn btn-primary">Registreer!</button>
+  <div class="checkboxy">
+    <input name="cecky" id="checky" value="1" type="checkbox" [(ngModel)]="check" [ngModelOptions]="{standalone: true}"/><label class="terms">Ik accepteer de gebruikersvoorwaarden</label>
+  </div>
+  <button [disabled]="inschrijvingIncompleet" id="submit">Registreer!</button>
+  </div>
 </form>
 </div>
 

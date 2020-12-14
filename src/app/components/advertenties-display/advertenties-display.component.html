@@ -1,15 +1,26 @@
-<div class="zoekinput">
-  <input type="text" placeholder="Waar bent u naar op zoek?" [(ngModel)]="searchword" (keyup)="find()">
+<div class="container">
+<div class="zoek">
+  <input class="zoekinput" type="text" placeholder="Waar bent u naar op zoek?" [(ngModel)]="searchword" (keyup)="find()">
 </div>
+  <div class="dienstofproduct">
+    <div>Ik zoek op: </div><br>
+    <input type="radio" value="" [(ngModel)]="zoekoptype" name="keuze" checked  (change)="find()"><label>Alles</label>
+    <input type="radio" value="Product" [(ngModel)]="zoekoptype" name="keuze"  (change)="find()"><label>Producten</label>
+    <input type="radio" value="Dienst" [(ngModel)]="zoekoptype" name="keuze"  (change)="find()"><label>Diensten</label>
+
+  </div>
 
 <ul>
-  <li *ngFor="let advertentie of advertentieLijst$ | async">
+
+  <li *ngFor="let advertentie of advertentieLijst$ | async" (click)="onClick()">
     <div class="titel">{{advertentie.titel}}</div>
-    <div class="prijs">{{advertentie.prijs}}</div>
+    <div class="prijs">{{advertentie.prijs}} euro</div>
     <div class="omschrijving">{{advertentie.omschrijving}}</div>
-    <div class="eigenaaradvertentie">{{advertentie.gebruikerVoornaam}} {{advertentie.gebruikerAchternaam}}</div>
+    <div class="eigenaaradvertentie">Aangeboden door: {{advertentie.gebruikerVoornaam}} {{advertentie.gebruikerAchternaam}}</div>
   </li>
+
 </ul>
+</div>
 
 
 

@@ -1,40 +1,50 @@
-<h2>Maak hier je eigen advertentie</h2>
-<div id="advertentieaanmaakformulier">
-<form [formGroup]="aanmaakAdvertentieForm" (ngSubmit)="addAdvertentie()">
-  <input type="text" id="titel" class="form-control" formControlName="titel" placeholder="Titel advertentie"><br>
-  <div *ngIf="aanmaakAdvertentieForm.get('titel').invalid &&
-        aanmaakAdvertentieForm.get('titel').touched">*
-  </div>
-  <div *ngIf="aanmaakAdvertentieForm.get('titel').invalid &&
+<div id="container">
+  <form [formGroup]="aanmaakAdvertentieForm" (ngSubmit)="addAdvertentie()" id="signup">
+    <div class="header">
+      <h3>Plaats een nieuwe advertentie!</h3>
+      <p>Verkocht voordat je er erg in hebt</p>
+    </div>
+
+    <div class="lijn"></div>
+    <div class="input">
+      <input type="text" id="titel" class="form-control" formControlName="titel" placeholder="Titel advertentie"><br>
+      <div *ngIf="aanmaakAdvertentieForm.get('titel').invalid &&
+        aanmaakAdvertentieForm.get('titel').touched" class="star">*
+      </div>
+      <div *ngIf="aanmaakAdvertentieForm.get('titel').invalid &&
         aanmaakAdvertentieForm.get('titel').dirty">Dit is een verplicht veld!
-  </div>
-  <input type="text" id="prijs" class="form-control" formControlName="prijs" placeholder="Prijs"><br>
-  <div *ngIf="aanmaakAdvertentieForm.get('prijs').invalid &&
-        aanmaakAdvertentieForm.get('prijs').touched">*
-  </div>
-  <div *ngIf="aanmaakAdvertentieForm.get('prijs').invalid &&
-        aanmaakAdvertentieForm.get('prijs').dirty">Alleen gehele getallen! Centjes haal je op de markt..
-  </div>
-  <div>Advertentietype:</div>
+      </div>
+      <input type="text" id="prijs" class="form-control" formControlName="prijs" placeholder="Prijs"><br>
+      <div *ngIf="aanmaakAdvertentieForm.get('prijs').invalid &&
+        aanmaakAdvertentieForm.get('prijs').touched" class="star">*
+      </div>
+      <div *ngIf="aanmaakAdvertentieForm.get('prijs').invalid &&
+        aanmaakAdvertentieForm.get('prijs').dirty">Voeg een valide prijs toe!
+      </div>
+      <div>Advertentietype:</div>
+      <div id="radioo">
 
-  <input type="radio" name="soort" value="Product" id="product" formControlName="soort" (change)="checkType()" >
-  <label for="product">Product</label><br>
-  <input type="radio" formControlName="soort" name="soort" value="Dienst" id="dienst" (change)="checkType()">
-  <label for="dienst">Dienst</label><br>
+        <label for="product">Product<input type="radio" name="soort" value="Product" id="product" formControlName="soort" (change)="checkType()"></label>
+
+        <br>
+        <label for="dienst">Dienst<input type="radio" formControlName="soort" name="soort" value="Dienst" id="dienst" (change)="checkType()"></label></div>
 
 
-  <input type="text" id="omschrijving" formControlName="omschrijving" placeholder="Eventuele omschrijving product">
-<ng-container *ngIf="productgekozen">
-    <div id="ondersteundeBezorgwijzen">
-  <span>Ondersteunde bezorgwijzen advertentie:</span><br><br><br>
 
-  <select multiple formControlName="bezorgwijzen">
-    <option *ngFor="let bezorg of this.gs.actieveGebruiker.bezorgwijzen" [ngValue]="bezorg">{{bezorg}}</option>
-  </select>
+      <textarea type="text" id="omschrijving" formControlName="omschrijving"
+                placeholder="Omschrijving product"></textarea>
+      <ng-container *ngIf="productgekozen">
+        <div id="ondersteundeBezorgwijzen">
+          <span>Ondersteunde bezorgwijzen advertentie:</span><br><br><br>
 
-  </div>
-</ng-container>
-  <br>
-  <button [disabled]="aanmaakAdvertentieForm.invalid" class="submit">Voeg advertentie toe!</button>
-</form>
+          <select multiple formControlName="bezorgwijzen">
+            <option *ngFor="let bezorg of this.gs.actieveGebruiker.bezorgwijzen" [ngValue]="bezorg">{{bezorg}}</option>
+          </select>
+
+        </div>
+      </ng-container>
+      <br>
+      <button [disabled]="aanmaakAdvertentieForm.invalid" id="submit">Voeg advertentie toe!</button>
+    </div>
+  </form>
 </div>

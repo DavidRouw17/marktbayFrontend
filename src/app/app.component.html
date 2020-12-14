@@ -1,7 +1,8 @@
 <div (click)="ingelogdCheck()" (mousemove)="ingelogdCheck()">
-<ul>
+  <div id="logo">Marktbay</div>
+  <ul id="menu">
   <ng-container *ngIf="!activeUser">
-  <li><a routerLink="/login" routerLinkActive="activeMenu">Inloggen</a></li>
+  <li><a routerLink="/login" routerLinkActive="activeMenu"><span>Inloggen</span></a></li>
   <li><a routerLink="/registreren" routerLinkActive="activeMenu">Registreer</a></li>
   </ng-container>
   <li><a routerLink="/advertenties" routerLinkActive="activeMenu">Geplaatste advertenties</a></li>
@@ -9,7 +10,7 @@
   <li><a routerLink="/aanmakenadvertentie" routerLinkActive="activeMenu">Creeër advertentie</a></li>
   </ng-container>
 </ul>
-  <div class="banner">Mooi logo todo</div>
+
 <router-outlet></router-outlet>
 </div>
 

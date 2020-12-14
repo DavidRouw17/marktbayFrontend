@@ -9,21 +9,25 @@ import {AdvertentieService} from '../../services/advertentie.service';
 export class AdvertentiesDisplayComponent{
 
   advertentieLijst$ = this.as.getAll();
-  searchword: string;
+  searchword = '';
+  zoekoptype = '';
 
   constructor(private as: AdvertentieService) { }
 
 
   find(): void{
-    if (this.searchword == null){
+    if (this.searchword === '' && this.zoekoptype === ''){
       this.advertentieLijst$ = this.as.getAll();
-      console.log(this.advertentieLijst$);
     }
     else {
-      this.advertentieLijst$ = this.as.getByQuery(this.searchword);
-      console.log(this.advertentieLijst$);
+      this.advertentieLijst$ = this.as.getByQuery(this.searchword + ' ' + this.zoekoptype);
     }
   }
+
+  onClick(){
+    console.log('Click!');
+  }
+
 
 
 }

@@ -1,30 +1,33 @@
-<h1>Welkom bij Marktbay!</h1>
-<h2>Hier kunt u inloggen</h2>
+<div id="container">
 
-<form [formGroup]="inlogFormulier" (ngSubmit)="logIn()">
+<form [formGroup]="inlogFormulier" (ngSubmit)="logIn()" id="login">
+  <div class="header">
+    <h3>Gebruiker login</h3>
+    <p>Log in voor de volledige functionaliteit!</p>
+  </div>
+  <div class="lijn"></div>
+  <div class="input">
   <div>
-  <label for="inputEmail">Email:</label>
   <input type="text" id="inputEmail" class="form-control" formControlName="email" placeholder="Email">
   <div *ngIf="inlogFormulier.get('email').invalid &&
-        inlogFormulier.get('email').touched">*
+        inlogFormulier.get('email').touched" class="star">*
   </div>
   <div *ngIf="inlogFormulier.get('email').invalid &&
         inlogFormulier.get('email').dirty">Dit is een verplicht veld!
   </div>
   </div>
   <div>
-    <label for="inputWachtwoord">Wachtwoord:</label>
     <input type="password" id="inputWachtwoord" class="form-control" formControlName="wachtwoord" placeholder="Wachtwoord">
     <div *ngIf="inlogFormulier.get('wachtwoord').invalid &&
-        inlogFormulier.get('wachtwoord').touched">*
+        inlogFormulier.get('wachtwoord').touched" class="star">*
     </div>
     <div *ngIf="inlogFormulier.get('wachtwoord').invalid &&
         inlogFormulier.get('wachtwoord').dirty">Dit is een verplicht veld!
     </div>
     <br>
   </div>
-  <button [disabled]="inlogFormulier.invalid" class="btn btn-primary">Log in!</button>
+  <button [disabled]="inlogFormulier.invalid" id="submit">Log in!</button>
+    <button id="accountAanmaken" routerLink="/registreren">Nog geen account?</button>
+    </div>
 </form>
-
-<br><br>
-<div><a routerLink="/registreren"> Nog geen account?</a></div>
+</div>

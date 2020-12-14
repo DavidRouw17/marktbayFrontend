@@ -14,6 +14,7 @@ export class RegistreerFormulierComponent {
   nieuweGebruiker: Gebruiker;
   afhalenGekozen = false;
   inschrijvingIncompleet = true;
+  check: boolean;
   bezorgwijzenLijst: string[] = ['AFHALEN', 'REMBOURS', 'VERZENDEN', 'MAGAZIJN'];
 
   constructor(private gs: GebruikerService) {
@@ -42,19 +43,22 @@ export class RegistreerFormulierComponent {
   }
 
   checkInschrijvingCompleet(): void {
-    if (this.gebruikerRegistreerForm.invalid) {
-      this.inschrijvingIncompleet = true;
-    } else {
-      if (!this.afhalenGekozen) {
-        this.inschrijvingIncompleet = false;
+    if (this.check) {
+      if (this.gebruikerRegistreerForm.invalid) {
+        this.inschrijvingIncompleet = true;
       } else {
-        if (this.adresRegistreerForm.invalid) {
-          this.inschrijvingIncompleet = true;
-        } else {
+        if (!this.afhalenGekozen) {
           this.inschrijvingIncompleet = false;
+        } else {
+          if (this.adresRegistreerForm.invalid) {
+            this.inschrijvingIncompleet = true;
+          } else {
+            this.inschrijvingIncompleet = false;
+          }
         }
       }
     }
+    else { this.inschrijvingIncompleet = true; }
   }
 
   addGebruiker(): void {

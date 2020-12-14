@@ -1,0 +1,73 @@
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 5px;
+}
+
+.zoekinput{
+  border: none;
+  padding: 10px;
+  margin: 15px;
+  height: 20px;
+  width: 500px;
+  border:1px solid #eaeaea;
+  outline:none;
+}
+.zoekinput:hover{
+  border-color: #a0a0a0 #b9b9b9 #b9b9b9 #b9b9b9;
+}
+.zoekinput:focus{
+  border-color:#4d90fe;
+}
+
+.dienstofproduct{
+  margin: 15px;
+}
+
+ul li{
+  color: white;
+  margin: 15px ;
+  float: left;
+  width: calc(25%);
+  height: 90px;
+  padding: 5px 25px 25px;
+  background: #555;
+  box-shadow:
+    0px 0px 0px 5px rgba(85,85,85,0.5),
+    0px 4px 20px rgba( 0,0,0,0.33 );
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  display: table;
+  position: relative;
+}
+
+ul li:hover{
+  background: #b5b5b5;
+}
+
+.titel {
+  font-weight: bold;
+  font-size: xx-large;
+  margin: 0 5px 0 0;
+  color: rgb(5, 2, 19);
+  -webkit-text-fill-color: black;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+}
+
+.prijs {
+  float: right;
+}
+
+.omschrijving{
+  padding: 0 5px 0 5px;
+  font-style: italic;
+}
+
+.eigenaaradvertentie{
+  position: absolute;
+  bottom: 0;
+  left: auto;
+}
+
