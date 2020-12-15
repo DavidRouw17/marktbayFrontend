@@ -14,15 +14,16 @@ import { AanmakenAdvertentieComponent } from './components/aanmaken-advertentie/
 import { AdvertentiesDisplayComponent } from './components/advertenties-display/advertenties-display.component';
 import { EigenAdvertentiesComponent } from './components/eigen-advertenties/eigen-advertenties.component';
 import { AanpassenGegevensComponent } from './components/aanpassen-gegevens/aanpassen-gegevens.component';
+import {AuthGuardService as AuthGuard} from './services/auth-guard.service';
 
 let routes: Route[] = [
   {path: '', component: InlogComponent},
   {path: 'registreren', component: RegistreerFormulierComponent},
   {path: 'login', component: InlogComponent},
-  {path: 'aanmakenadvertentie', component: AanmakenAdvertentieComponent},
-  {path: 'advertenties', component: AdvertentiesDisplayComponent},
-  {path: 'mijnadvertenties', component: EigenAdvertentiesComponent},
-  {path: 'mijngegevens', component: AanpassenGegevensComponent}
+  {path: 'aanmakenadvertentie', component: AanmakenAdvertentieComponent, canActivate: [AuthGuard]},
+  {path: 'advertenties', component: AdvertentiesDisplayComponent, canActivate: [AuthGuard]},
+  {path: 'mijnadvertenties', component: EigenAdvertentiesComponent, canActivate: [AuthGuard]},
+  {path: 'mijngegevens', component: AanpassenGegevensComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
