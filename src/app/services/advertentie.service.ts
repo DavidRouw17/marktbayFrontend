@@ -29,4 +29,8 @@ export class AdvertentieService {
 
     return this.advertentiesUpdated$;
   }
+
+  delete(a: AdvertentieDto): void {
+    this.http.delete<AdvertentieDto>(this.url.toString() + '/' + a.id).subscribe();
+  }
 }
