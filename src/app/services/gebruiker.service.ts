@@ -7,6 +7,7 @@ import {Inlogpoging} from '../models/inlogpoging';
 import {Advertentie} from '../models/advertentie';
 import {GebruikerDto} from '../models/gebruikerDto';
 import {AdvertentieDto} from '../models/advertentieDto';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,7 @@ export class GebruikerService {
 
   actieveGebruiker: GebruikerDto;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
   }
 
   getAll(): Observable<Gebruiker[]> {
@@ -55,7 +56,7 @@ export class GebruikerService {
   }
 
   updateGebruiker(c: Gebruiker): void {
-    this.http.put<Gebruiker>(`${this.url}/${c.id}`, c)
+    this.http.put<Gebruiker>(`${this.url}/${this.actieveGebruiker.id}`, c)
       .subscribe();
   }
 
@@ -65,6 +66,8 @@ export class GebruikerService {
       .subscribe(
         gebruiker => {
           this.actieveGebruiker = gebruiker;
+          this.router.navigateByUrl('/advertenties');
+          alert(`Welkom ${gebruiker.voornaam}`);
         }
       );
 

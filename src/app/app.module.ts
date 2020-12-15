@@ -13,6 +13,7 @@ import {InlogComponent} from './components/inlog/inlog.component';
 import { AanmakenAdvertentieComponent } from './components/aanmaken-advertentie/aanmaken-advertentie.component';
 import { AdvertentiesDisplayComponent } from './components/advertenties-display/advertenties-display.component';
 import { EigenAdvertentiesComponent } from './components/eigen-advertenties/eigen-advertenties.component';
+import { AanpassenGegevensComponent } from './components/aanpassen-gegevens/aanpassen-gegevens.component';
 
 let routes: Route[] = [
   {path: '', component: InlogComponent},
@@ -20,7 +21,8 @@ let routes: Route[] = [
   {path: 'login', component: InlogComponent},
   {path: 'aanmakenadvertentie', component: AanmakenAdvertentieComponent},
   {path: 'advertenties', component: AdvertentiesDisplayComponent},
-  {path: 'mijnadvertenties', component: EigenAdvertentiesComponent}
+  {path: 'mijnadvertenties', component: EigenAdvertentiesComponent},
+  {path: 'mijngegevens', component: AanpassenGegevensComponent}
 ];
 
 @NgModule({
@@ -32,6 +34,7 @@ let routes: Route[] = [
     AanmakenAdvertentieComponent,
     AdvertentiesDisplayComponent,
     EigenAdvertentiesComponent,
+    AanpassenGegevensComponent,
 
   ],
   imports: [

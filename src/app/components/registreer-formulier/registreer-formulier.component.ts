@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Gebruiker} from '../../models/gebruikers';
 import {GebruikerService} from '../../services/gebruiker.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-registreer-formulier',
@@ -17,7 +18,7 @@ export class RegistreerFormulierComponent {
   check: boolean;
   bezorgwijzenLijst: string[] = ['AFHALEN', 'REMBOURS', 'VERZENDEN', 'MAGAZIJN'];
 
-  constructor(private gs: GebruikerService) {
+  constructor(private gs: GebruikerService, private router: Router) {
     this.gebruikerRegistreerForm = new FormGroup({
       voornaam: new FormControl('', [Validators.required]),
       achternaam: new FormControl('', [Validators.required]),
@@ -72,6 +73,7 @@ export class RegistreerFormulierComponent {
     this.inschrijvingIncompleet = true;
     this.gebruikerRegistreerForm.reset();
     this.adresRegistreerForm.reset();
+    this.router.navigateByUrl('/login');
   }
 
 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {GebruikerService} from './services/gebruiker.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ export class AppComponent {
   title = 'marktbay';
   activeUser = false;
 
-  constructor(private gs: GebruikerService) {
+  constructor(private gs: GebruikerService, private router: Router) {
   }
 
   ingelogdCheck(): void{
@@ -20,5 +21,12 @@ export class AppComponent {
     else {
       this.activeUser = true;
     }
+  }
+
+  logUit(): void{
+    this.router.navigateByUrl('/login');
+    this.gs.actieveGebruiker = null;
+    this.activeUser = false;
+    alert('Succesvol uitgelogd. Tot ziens!');
   }
 }

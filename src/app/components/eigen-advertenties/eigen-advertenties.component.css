@@ -51,14 +51,10 @@ ul li:hover{
   font-style: italic;
 }
 
-.eigenaaradvertentie{
-  position: relative;
-  bottom: 0;
-  left: auto;
-}
+
 
 .deleteButton{
-  position: relative;
+  position: absolute;
   bottom: 0;
   right: 0;
 }

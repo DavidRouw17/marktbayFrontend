@@ -9,6 +9,8 @@
   <ng-container *ngIf="activeUser">
   <li><a routerLink="/aanmakenadvertentie" routerLinkActive="activeMenu">Creeër advertentie</a></li>
   <li><a routerLink="/mijnadvertenties" routerLinkActive="activeMenu">Mijn advertenties</a></li>
+  <li><a routerLink="/mijngegevens" routerLinkActive="activeMenu">Aanpassen mijn info</a></li>
+    <li (click)="logUit()"><a class="uitloggen">Log uit</a></li>
   </ng-container>
 </ul>
 

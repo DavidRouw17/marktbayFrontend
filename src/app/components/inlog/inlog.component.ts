@@ -21,7 +21,7 @@ export class InlogComponent {
   logIn(): void {
     this.gs.logIn(this.inlogFormulier.value);
     this.inlogFormulier.reset();
-    this.router.navigateByUrl('/advertenties');
+
   }
 
 
