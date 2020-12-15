@@ -3,6 +3,7 @@ import {GebruikerService} from '../../services/gebruiker.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {GebruikerDto} from '../../models/gebruikerDto';
 import {AdvertentieDto} from '../../models/advertentieDto';
+import {Advertentie} from '../../models/advertentie';
 
 @Component({
   selector: 'app-aanmaken-advertentie',
@@ -22,7 +23,7 @@ export class AanmakenAdvertentieComponent {
       prijs: new FormControl('', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]),
       soort: new FormControl('', [Validators.required]),
       omschrijving: new FormControl('', [Validators.required]),
-      bezorgwijzen: new FormControl('', null)
+      bezorgwijzenLijst: new FormControl('', null)
     });
 
   }

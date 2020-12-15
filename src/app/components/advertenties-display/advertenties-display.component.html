@@ -12,7 +12,7 @@
 
 <ul>
 
-  <li *ngFor="let advertentie of advertentieLijst$ | async" (click)="onClick()">
+  <li *ngFor="let advertentie of advertentieLijst$ | async">
     <div class="titel">{{advertentie.titel}}</div>
     <div class="prijs">{{advertentie.prijs}} euro</div>
     <div class="omschrijving">{{advertentie.omschrijving}}</div>

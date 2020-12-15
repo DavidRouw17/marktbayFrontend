@@ -24,9 +24,6 @@ export class AdvertentiesDisplayComponent{
     }
   }
 
-  onClick(){
-    console.log('Click!');
-  }
 
 
 
