@@ -4,4 +4,5 @@ export interface Advertentie{
   omschrijving?: string;
   prijs: number;
   soort: string;
+  bezorgwijzeLijst?: string[];
 }

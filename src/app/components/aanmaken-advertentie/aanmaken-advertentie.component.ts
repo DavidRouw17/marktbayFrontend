@@ -1,17 +1,19 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {GebruikerService} from '../../services/gebruiker.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {GebruikerDto} from '../../models/gebruikerDto';
+import {AdvertentieDto} from '../../models/advertentieDto';
 
 @Component({
   selector: 'app-aanmaken-advertentie',
   templateUrl: './aanmaken-advertentie.component.html',
   styleUrls: ['./aanmaken-advertentie.component.css']
 })
-export class AanmakenAdvertentieComponent{
+export class AanmakenAdvertentieComponent {
   actieveGebruiker: GebruikerDto;
   aanmaakAdvertentieForm: FormGroup;
   productgekozen = false;
+  nieuweAdvertentie: AdvertentieDto;
 
 
   constructor(public gs: GebruikerService) {
@@ -20,10 +22,10 @@ export class AanmakenAdvertentieComponent{
       prijs: new FormControl('', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]),
       soort: new FormControl('', [Validators.required]),
       omschrijving: new FormControl('', [Validators.required]),
-      bezorgwijzen: new FormControl('', [Validators.required])
+      bezorgwijzen: new FormControl('', null)
     });
-  }
 
+  }
 
 
   checkType(): void {
@@ -36,13 +38,12 @@ export class AanmakenAdvertentieComponent{
 
 
   addAdvertentie(): void {
-    this.gs.addAdvertentie(this.aanmaakAdvertentieForm.value);
+    this.nieuweAdvertentie = this.aanmaakAdvertentieForm.value;
+    this.gs.addAdvertentie(this.nieuweAdvertentie);
     alert('Advertentie succesvol toegevoegd!');
     this.productgekozen = false;
     this.aanmaakAdvertentieForm.reset();
   }
-
-
 
 
 }

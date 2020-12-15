@@ -6,6 +6,7 @@ import {catchError} from 'rxjs/operators';
 import {Inlogpoging} from '../models/inlogpoging';
 import {Advertentie} from '../models/advertentie';
 import {GebruikerDto} from '../models/gebruikerDto';
+import {AdvertentieDto} from '../models/advertentieDto';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,8 @@ export class GebruikerService {
   gebruikersUpdated$ = new Subject<Gebruiker[]>();
 
   actieveGebruiker$ = new Subject<GebruikerDto>();
+
+  gebruikerAdvertenties$ = new Subject<AdvertentieDto[]>();
 
   actieveGebruiker: GebruikerDto;
 
@@ -60,13 +63,32 @@ export class GebruikerService {
     this.http.post<GebruikerDto>(this.url.toString() + '/login', i)
       .pipe(catchError(this.handleError))
       .subscribe(
-        gebruiker => this.actieveGebruiker = gebruiker
+        gebruiker => {
+          this.actieveGebruiker = gebruiker;
+        }
       );
+
     return this.actieveGebruiker$;
   }
 
   addAdvertentie(a: Advertentie): void {
+    console.log(a);
     this.http.post<Gebruiker>(this.url.toString() + '/' + this.actieveGebruiker.id + '/advertenties', a)
+      .subscribe();
+  }
+
+  getAdvertentieGebruiker(): Observable<AdvertentieDto[]> {
+
+    this.http.get<AdvertentieDto[]>(this.url.toString() + '/' + this.actieveGebruiker.id + '/advertenties')
+      .subscribe(inhoud => this.gebruikerAdvertenties$.next(inhoud)
+      );
+
+
+    return this.gebruikerAdvertenties$;
+  }
+
+  verwijderAdvertentie(a: AdvertentieDto): void {
+    this.http.delete<AdvertentieDto>(this.url.toString() + '/' + this.actieveGebruiker.id + '/advertenties/' + a.id)
       .subscribe();
   }
 

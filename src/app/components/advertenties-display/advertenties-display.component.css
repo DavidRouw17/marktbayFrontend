@@ -58,6 +58,7 @@ ul li:hover{
 
 .prijs {
   float: right;
+  margin-left: 2px;
 }
 
 .omschrijving{
